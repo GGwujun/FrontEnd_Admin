@@ -10,6 +10,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "dsx",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GGwujun/vue.git"
+  },
+  "keywords": [
+    "vue"
+  ],
+  "bugs": {
+    "url": "https://github.com/GGwujun/vue/issues"
+  },
+  "homepage": "https://github.com/GGwujun/vue#readme"
 }
