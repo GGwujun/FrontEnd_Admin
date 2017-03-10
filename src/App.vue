@@ -1,46 +1,66 @@
-<template>
-	<div id="app">
-		<img src="./assets/logo.png">
-		<router-view></router-view>
-		<Test say="你是猪" v-on:myChild="toFatherSay"></Test>
-		<p>我儿子对我说: {{noSay}}</p>
-		<Dagger></Dagger>
-	</div>
-</template>
-
 <script>
-	import Test from './components/Test' // 这里引入Test组件
-	import Dagger from './components/Dagger' // 引入Dagger组件        2.引入Dagger
-	
-	export default {
-		name: 'app',
-		components: {
-			Test, // 在components中添加Test
-			Dagger
-		},
-		data() {
-			return {
-				noSay: '' // 用来接收子组件穿过来的数据
-			}
-		},
-		methods: {
-			toFatherSay: function(massage) { // mychlid事件触发调用的方法
-				this.noSay = massage // massage就是子组件穿过来的内容
-			},
-			changeDagger: function() {  //4. 增加按钮点击触发的事件
-				this.$store.commit('daggerCtrl') // 使用commit(提交)方法唤醒名为daggerCtrl的mutation
-			}
-		}
-	}
+import { actions } from './store';
+
+import Card from 'components/card';
+import List from 'components/list';
+import Text from 'components/text';
+import Message from 'components/message';
+
+export default {
+    components: { Card, List, Text, Message },
+    vuex: {
+        actions: actions
+    },
+    created () {
+        this.initData();
+    }
+}
 </script>
 
-<style>
-	#app {
-		font-family: 'Avenir', Helvetica, Arial, sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-align: center;
-		color: #2c3e50;
-		margin-top: 60px;
-	}
+<template>
+<div id="app">
+    <div class="sidebar">
+        <card></card>
+        <list></list>
+    </div>
+    <div class="main">
+        <message></message>
+        <text></text>
+    </div>
+</div>
+</template>
+
+<style lang="less" scoped>
+#app {
+    margin: 20px auto;
+    width: 800px;
+    height: 600px;
+
+    overflow: hidden;
+    border-radius: 3px;
+
+    .sidebar, .main {
+        height: 100%;
+    }
+    .sidebar {
+        float: left;
+        width: 200px;
+        color: #f4f4f4;
+        background-color: #2e3238;
+    }
+    .main {
+        position: relative;
+        overflow: hidden;
+        background-color: #eee;
+    }
+    .text {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+    }
+    .message {
+        height: ~'calc(100% - 160px)';
+    }
+}
 </style>
