@@ -29,27 +29,27 @@ export default {
 </div>
 </template>
 
-<style scoped lang="less">
+<style scoped >
 .card {
     padding: 12px;
     border-bottom: solid 1px #24272C;
-
-    footer {
+}
+    .card footer {
         margin-top: 10px;
     }
 
-    .avatar, .name {
+    .card .avatar, .name {
         vertical-align: middle;
     }
-    .avatar {
+    .card .avatar {
         border-radius: 2px;
     }
-    .name {
+    .card .name {
         display: inline-block;
         margin: 0 0 0 15px;
         font-size: 16px;
     }
-    .search {
+    .card .search {
         padding: 0 10px;
         width: 100%;
         font-size: 12px;
@@ -61,5 +61,5 @@ export default {
         outline: none;
         background-color: #26292E;
     }
-}
+
 </style>

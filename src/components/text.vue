@@ -27,12 +27,12 @@ export default {
 </div>
 </template>
 
-<style lang="less" scoped>
+<style  scoped>
 .text {
     height: 160px;
     border-top: solid 1px #ddd;
-
-    textarea {
+}
+.text textarea {
         padding: 10px;
         height: 100%;
         width: 100%;
@@ -41,5 +41,4 @@ export default {
         font-family: "Micrsofot Yahei";
         resize: none;
     }
-}
 </style>

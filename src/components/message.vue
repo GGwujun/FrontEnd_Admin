@@ -42,19 +42,19 @@ export default {
 </div>
 </template>
 
-<style lang="less" scoped>
+<style  scoped>
 .message {
     padding: 10px 15px;
     overflow-y: scroll;
-
-    li {
+}
+    .message li {
         margin-bottom: 15px;
     }
-    .time {
+    .message .time {
         margin: 7px 0;
         text-align: center;
-
-        > span {
+}
+        .message .time > span {
             display: inline-block;
             padding: 0 18px;
             font-size: 12px;
@@ -62,13 +62,13 @@ export default {
             border-radius: 2px;
             background-color: #dcdcdc;
         }
-    }
-    .avatar {
+    
+    .message .avatar {
         float: left;
         margin: 0 10px 0 0;
         border-radius: 3px;
     }
-    .text {
+    .message .text {
         display: inline-block;
         position: relative;
         padding: 0 10px;
@@ -80,8 +80,10 @@ export default {
         word-break: break-all;
         background-color: #fafafa;
         border-radius: 4px;
-
-        &:before {
+        
+    }
+	
+	.message .text:before {
             content: " ";
             position: absolute;
             top: 9px;
@@ -89,25 +91,23 @@ export default {
             border: 6px solid transparent;
             border-right-color: #fafafa;
         }
-    }
 
-    .self {
-        text-align: right;
-
-        .avatar {
-            float: right;
-            margin: 0 0 0 10px;
-        }
-        .text {
-            background-color: #b2e281;
-
-            &:before {
-                right: inherit;
-                left: 100%;
-                border-right-color: transparent;
-                border-left-color: #b2e281;
-            }
-        }
-    }
+.message .self {
+	text-align: right;
 }
+.message .self .avatar {
+	float: right;
+	margin: 0 0 0 10px;
+}
+.message .self .text {
+	background-color: #b2e281;
+}
+.message .self .text:before {
+	right: inherit;
+	left: 100%;
+	border-right-color: transparent;
+	border-left-color: #b2e281;
+}
+       
+
 </style>
