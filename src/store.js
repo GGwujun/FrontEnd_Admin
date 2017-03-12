@@ -13,7 +13,7 @@ const store = new Vuex.Store({
         // 当前用户
         user: {
             name: 'coffce',
-            img: 'dist/images/1.jpg'
+            img: '../static/1.jpg'
         },
         // 会话列表
         sessions: [
@@ -21,7 +21,7 @@ const store = new Vuex.Store({
                 id: 1,
                 user: {
                     name: '示例介绍',
-                    img: 'dist/images/2.png'
+                    img: '../static/2.png'
                 },
                 messages: [
                     {
@@ -37,7 +37,7 @@ const store = new Vuex.Store({
                 id: 2,
                 user: {
                     name: 'webpack',
-                    img: 'dist/images/3.jpg'
+                    img: '../static/3.jpg'
                 },
                 messages: []
             }
@@ -86,9 +86,3 @@ store.watch(
 );
 
 export default store;
-export const actions = {
-    initData: ({ dispatch }) => dispatch('INIT_DATA'),
-    sendMessage: ({ dispatch }, content) => dispatch('SEND_MESSAGE', content),
-    selectSession: ({ dispatch }, id) => dispatch('SELECT_SESSION', id),
-    search: ({ dispatch }, value) => dispatch('SET_FILTER_KEY', value)
-};

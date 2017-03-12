@@ -8,7 +8,8 @@ import store from './store';
 Vue.config.devtools = true;
 
 new Vue({
-    el: 'body',
+    el: '#app',
+    template: '<App/>',
     components: { App },
-    store: store
+    store
 });

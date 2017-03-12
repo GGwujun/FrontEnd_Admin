@@ -1,19 +1,22 @@
 <script>
-import { actions } from '../store';
+import { actions } from '../actions'
+
+import {mapState} from 'vuex'
 
 export default {
     vuex: {
-        actions: actions,
-        getters: {
-            // 过滤后的会话列表
-            sessions: ({ sessions, filterKey }) => {
-                let result = sessions.filter(session => session.user.name.includes(filterKey));
+        actions: actions
+    },
+    computed: mapState({
+			// 在 mapState 里面我们既可以调用 store 的 state ，也可以调用 store 的 getters
+			currentId: (state) => {
+				return state.currentId
+			},
+			sessions:(state,sessions,filterKey) =>{
+				let result = state.sessions.filter(session => session.user.name.includes(filterKey));
                 return result;
-            },
-            // 当前会话index
-            currentId: ({ currentSessionId }) => currentSessionId
-        }
-    }
+			}
+	})
 };
 </script>
 
