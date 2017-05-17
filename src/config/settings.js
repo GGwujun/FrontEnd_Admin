@@ -4,8 +4,7 @@ var settings = {
 
 	//全局设置
 	gbs: {
-		// host: '//slsadmin.api.' + (env.NODE_ENV === 'development' ? 'sls' : 'sailengsi') + '.com',
-		host: '/slsAdminApi', //接口根地址。本地代理到slsadmin.api.sls.com,线上使用的是Nginx代理
+		host: 'http://119.23.245.101:3000', //接口根地址。本地代理到slsadmin.api.sls.com,线上使用的是Nginx代理
 		db_prefix: 'sls_admin_', //本地存储的key
 	},
 

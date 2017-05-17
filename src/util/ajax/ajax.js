@@ -31,15 +31,15 @@ module.exports = function (type, url, data, fn, {
 } = {}) {
 
 	var options = {
-		method : type,
-		url    : host || url,
-		headers: headers && typeof headers === 'object' ? headers : {}
+		method: type,
+		url: host || url,
+		headers: headers && typeof headers === 'object' ? headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 	};
 
 	//检测接口权限
 	var api_flag = true;
 	if (options.url && options.url.indexOf(gbs.host) && this.$store.state.user.userinfo.access_status === 1) {
-		var url         = options.url.replace(gbs.host, '');
+		var url = options.url.replace(gbs.host, '');
 		var api_routers = this.$store.state.user.userinfo.api_routers;
 		if (!api_routers || !api_routers.constructor === Object || !api_routers[url]) {
 			api_flag = false;
@@ -55,8 +55,7 @@ module.exports = function (type, url, data, fn, {
 		if (tokenFlag !== true) {
 			//如果你们的后台不会接受headers里面的参数，打开这个注释，即实现token通过普通参数方式传
 			// data.token = this.$store.state.user.userinfo.token;
-
-			options.headers.token = this.$store.state.user.userinfo.token;
+			//options.headers.token = this.$store.state.user.userinfo.token;
 		}
 
 		//axios内置属性均可写在这里
@@ -68,14 +67,14 @@ module.exports = function (type, url, data, fn, {
 
 		//发送请求
 		Vue.axios(options).then((res) => {
-			if (res.data.status === 200) {
-				// console.dir(res.data);
-				fn(res.data.data);
+			console.log(res)
+			if (res.status === 200) {
+				console.log(res);
+				fn(res.data);
 			} else {
-
 				if (cbFn) {
 					cbFn(res.data);
-				}else{
+				} else {
 					// 调用全局配置错误回调
 					cbs.statusError.call(this, res.data);
 
@@ -95,7 +94,7 @@ module.exports = function (type, url, data, fn, {
 	} else {
 		this.$alert('您没用权限请求该接口！', '请求错误', {
 			confirmButtonText: '确定',
-			type             : 'warning'
+			type: 'warning'
 		});
 	}
 };

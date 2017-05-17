@@ -5,7 +5,9 @@
         </strong>
         <el-breadcrumb separator="/" class='el-bread'>
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item v-for='(item,index) in $route.matched'>{{item.name}}</el-breadcrumb-item>
+            <el-breadcrumb-item v-for='(item,index) in $route.matched'  v-if="index>0">
+                {{item.name}}
+            </el-breadcrumb-item>
         </el-breadcrumb>
     </div>
 </template>

@@ -406,6 +406,7 @@ module.exports = {
          * 获取用户信息列表方法
          */
         getList() {
+            debugger;
             var data = {};
 
             var query = this.$route.query;
@@ -415,7 +416,6 @@ module.exports = {
                     data[k] = query[k];
                 }
             }
-
             this.$$api_user_selectUser(data, (data) => {
                 this.user_list = data.list;
             });

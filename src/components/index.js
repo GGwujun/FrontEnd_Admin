@@ -8,10 +8,8 @@ import Modules from './Modules/';
 
 module.exports = {
     Login,
-
     Home,
     Content,
     NotFound,
-
     Modules
 };

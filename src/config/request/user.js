@@ -23,7 +23,7 @@ module.exports = [
 		name  : '获取用户列表',
 		method: 'selectUser',
 		path  : '/User/selectUser',
-		type  : 'get',
+		type  : 'post',
 	},
 
 	{

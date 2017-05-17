@@ -86,6 +86,8 @@ router.afterEach(transition => {
 	NProgress.done();
 });
 
+
+
 const appAdmin = new Vue({
 	el: '#app',
 	data() {

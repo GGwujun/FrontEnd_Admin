@@ -91,55 +91,75 @@ module.exports = {
                 this.$message.error('请输入确认密码');
                 return;
             }
-            this.login_actions.disabled = true;
-            this.$router.push('/demo/user/list');
-            // this.$refs[ref].validate((valid) => {
-            //     if (valid) {
-            //         this.login_actions.disabled = true;
-            //         //如果记住密码，提交的信息包括真实token，密码则是假的
-            //         //服务端登录验证优先级：用户名必须，其次先取token，不存在时再取密码
-            //         this.$$api_user_login(this[ref], data => {
-            //             //登录成功之后，验证是否记住密码，如果记住密码，本地保存记住信息
-            //             //如果没有记住，就初始化本地记住信息
-            //             if (this.remumber.remumber_flag === true) {
-            //                 this.$store.dispatch('update_remumber', {
-            //                     remumber_flag: this.remumber.remumber_flag,
-            //                     remumber_login_info: {
-            //                         username: this[ref].username,
-            //                         token: data.userinfo.token
-            //                     }
-            //                 });
-            //             } else {
-            //                 this.$store.dispatch('remove_remumber');
-            //             }
-            //             try {
-            //                 data.userinfo.web_routers = JSON.parse(data.userinfo.web_routers) ? JSON.parse(data.userinfo.web_routers) : {};
-            //             } catch (e) {
-            //                 data.userinfo.web_routers = {};
-            //             }
-            //             try {
-            //                 data.userinfo.api_routers = JSON.parse(data.userinfo.api_routers) ? JSON.parse(data.userinfo.api_routers) : {};
-            //             } catch (e) {
-            //                 data.userinfo.api_routers = {};
-            //             }
-            //             this.$store.dispatch('update_userinfo', {
-            //                 userinfo: data.userinfo
-            //             }).then(() => {
-            //                 this.login_actions.disabled = false;
-            //                 if (data.userinfo.default_web_routers) {
-            //                     this.$router.push(data.userinfo.default_web_routers);
-            //                 } else {
-            //                     this.$router.push('/demo/user/list');
-            //                 }
-            //             });
-            //         }, {
-            //                 errFn: () => {
-            //                     this.login_actions.disabled = false;
-            //                 },
-            //                 tokenFlag: true
-            //             });
-            //     }
-            // });
+
+            debugger;
+            this.$refs[ref].validate((valid) => {
+                if (valid) {
+                    this.login_actions.disabled = true;
+                    //如果记住密码，提交的信息包括真实token，密码则是假的
+                    //服务端登录验证优先级：用户名必须，其次先取token，不存在时再取密码
+                    this.$$api_user_login(this[ref], data => {
+                    // var data = {
+                    //     userinfo: {
+                    //         access_status: 2,
+                    //         address: "",
+                    //         api_routers: "",
+                    //         birthday: "1992-11-05",
+                    //         create_time: "2017-05-08 08:16:11",
+                    //         default_web_routers: "",
+                    //         email: "",
+                    //         id: 753,
+                    //         is_update_pass: 1,
+                    //         pid: 78,
+                    //         sex: "3",
+                    //         status: 1,
+                    //         token: "8b04498138834fa8e4e961c71591b565",
+                    //         username: "sls-1",
+                    //         web_routers: ""
+                    //     }
+                    // }
+                    //登录成功之后，验证是否记住密码，如果记住密码，本地保存记住信息
+                    //如果没有记住，就初始化本地记住信息
+                    if (this.remumber.remumber_flag === true) {
+                        this.$store.dispatch('update_remumber', {
+                            remumber_flag: this.remumber.remumber_flag,
+                            remumber_login_info: {
+                                username: this[ref].username,
+                                token: data.userinfo.token
+                            }
+                        });
+                    } else {
+                        this.$store.dispatch('remove_remumber');
+                    }
+                    try {
+                        data.userinfo.web_routers = JSON.parse(data.userinfo.web_routers) ? JSON.parse(data.userinfo.web_routers) : {};
+                    } catch (e) {
+                        data.userinfo.web_routers = {};
+                    }
+                    try {
+                        data.userinfo.api_routers = JSON.parse(data.userinfo.api_routers) ? JSON.parse(data.userinfo.api_routers) : {};
+                    } catch (e) {
+                        data.userinfo.api_routers = {};
+                    }
+                    this.$store.dispatch('update_userinfo', {
+                        userinfo: data.userinfo
+                    }).then(() => {
+                        this.login_actions.disabled = false;
+                        if (data.userinfo.default_web_routers) {
+                            this.$router.push(data.userinfo.default_web_routers);
+                        } else {
+                            this.$router.push('/demo/user/list');
+                        }
+                    });
+                    },
+                    {
+                        errFn: () => {
+                            this.login_actions.disabled = false;
+                        },
+                        tokenFlag: true
+                    });
+                }
+            });
         },
 
         onRegister(ref) {
