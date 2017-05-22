@@ -1,3 +1,4 @@
+import moment from 'moment'
 module.exports = {
 	name   : 'article-list',
 	data() {
@@ -102,6 +103,11 @@ module.exports = {
 		formatterStatus(item) {
 			return item.status == 1 ? '启用' : '禁用';
 		},
+
+		// 格式化date  包含小时
+        formatterDate(item) {
+            return moment(item).format('YYYY-MM-DD HH:MM:SS');
+        },
 
 		filterSex(value, item) {
 			return item.sex == value;

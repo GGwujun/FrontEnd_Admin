@@ -20,7 +20,7 @@ Vue.use({
 		 * @param  {object} target 注册目标对象，即Vue
 		 * @param  {object} source 需要注册的对象
 		 */
-		var deepRegister = function(target, source) {
+		var deepRegister = function (target, source) {
 			for (var k in source) {
 				if (typeof source[k] === 'object') {
 					deepRegister(target, source[k]);

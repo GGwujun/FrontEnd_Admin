@@ -1,3 +1,4 @@
+import moment from 'moment'
 module.exports = {
     name: 'list',
     data() {
@@ -19,11 +20,11 @@ module.exports = {
                 user_info: {}
             },
 
-            dialog_access:{
-                show:false,
-                userinfo:{},
-                web_routers:[],
-                api_routers:[]
+            dialog_access: {
+                show: false,
+                userinfo: {},
+                web_routers: [],
+                api_routers: []
             },
 
             //列表过滤性别
@@ -66,7 +67,7 @@ module.exports = {
                 children: 'children',
                 label: 'name'
             }
-            
+
         }
     },
     methods: {
@@ -145,7 +146,7 @@ module.exports = {
         },
 
 
-        initRouters(){
+        initRouters() {
             var routes = this.$router.options.routes;
             for (var i = 0; i < routes.length; i++) {
                 if (routes[i].hidden !== true && routes[i].children && routes[i].children.length) {
@@ -193,6 +194,17 @@ module.exports = {
             return item.sex == 1 ? '男' : (item.sex == 2 ? '女' : '保密');
         },
 
+        // 格式化date  包含小时
+        formatterDate(item) {
+            return moment(item).format('YYYY-MM-DD HH:MM:SS');
+        },
+
+
+        // 格式化date  年月日
+        formatterYear(item) {
+            return moment(item).format('YYYY-MM-DD');
+        },
+
 
         /**
          * 列表状态格式化事件
@@ -211,6 +223,7 @@ module.exports = {
          * @return {boolean}       匹配成功为true,否则为false
          */
         filterSex(value, item) {
+            debugger;
             return item.sex == value;
         },
 
@@ -326,11 +339,11 @@ module.exports = {
         /**
          * 设置权限
          */
-        onSetAccess(user,index,list){
+        onSetAccess(user, index, list) {
             this.$router.push({
-                path:'/demo/user/access',
-                query:{
-                    id:user.id
+                path: '/demo/user/access',
+                query: {
+                    id: user.id
                 }
             });
 
@@ -353,24 +366,24 @@ module.exports = {
             } else {
                 var id = user.id;
             }
-			this.$confirm('你确定删除用户 '+user.username+' 么?', '删除用户', {
-				confirmButtonText: '确定',
-				cancelButtonText: '取消',
-				type: 'warning'
-			}).then(() => {
-				this.$$api_user_deleteUser({
-					id: id
-				}, (data) => {
-					if (user === true) {
-						this.user_list = this.user_list.filter(function(item, idx) {
-							return id.indexOf(item.id) === -1;
-						});
-					} else {
-						list.splice(index, 1);
-					}
-					this.getList();
-				});
-			});
+            this.$confirm('你确定删除用户 ' + user.username + ' 么?', '删除用户', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.$$api_user_deleteUser({
+                    id: id
+                }, (data) => {
+                    if (user === true) {
+                        this.user_list = this.user_list.filter(function (item, idx) {
+                            return id.indexOf(item.id) === -1;
+                        });
+                    } else {
+                        list.splice(index, 1);
+                    }
+                    this.getList();
+                });
+            });
 
         },
 
@@ -406,9 +419,7 @@ module.exports = {
          * 获取用户信息列表方法
          */
         getList() {
-            debugger;
             var data = {};
-
             var query = this.$route.query;
             for (var k in query) {
                 if (this.search_data[k] !== undefined) {
@@ -434,7 +445,7 @@ module.exports = {
          }, 600);*/
     },
     watch: {
-        '$route' (to, from) {
+        '$route'(to, from) {
             this.getList();
         }
     }

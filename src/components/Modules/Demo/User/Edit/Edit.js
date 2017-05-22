@@ -72,7 +72,7 @@ module.exports = {
 				this.$$api_user_findUser({
 					id: this.$route.query.id
 				}, (data) => {
-					this.user_data        = data.userinfo;
+					this.user_data = data.userinfo;
 					this.user_data.status = this.user_data.status == 1 ? true : false;
 
 				});

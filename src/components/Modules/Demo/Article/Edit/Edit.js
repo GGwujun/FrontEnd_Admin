@@ -3,43 +3,43 @@ import {
 } from 'config/settings.js';
 
 module.exports = {
-	name   : 'edit-article',
+	name: 'edit-article',
 	data() {
 		return {
 			article_data: {
-				title  : '',
-				cate   : '',
-				tabs   : ['html'],
-				status : true,
+				title: '',
+				cate: '',
+				tabs: ['html'],
+				status: true,
 				content: '',
 			},
-			temp        : {
+			temp: {
 				content: ''
 			},
-			rules       : {
-				title  : [{
+			rules: {
+				title: [{
 					required: true,
-					message : '文章标题不能为空！',
-					trigger : 'blur'
+					message: '文章标题不能为空！',
+					trigger: 'blur'
 				}],
-				cate   : [{
+				cate: [{
 					required: true,
-					message : '文章分类不能为空！',
-					trigger : 'change'
+					message: '文章分类不能为空！',
+					trigger: 'change'
 				}],
-				tabs   : [{
-					type    : 'array',
+				tabs: [{
+					type: 'array',
 					required: true,
-					message : '请至少选择一个文章标签！',
-					trigger : 'change'
+					message: '请至少选择一个文章标签！',
+					trigger: 'change'
 				}],
 				content: [{
 					required: true,
-					message : '文章不能为空！',
-					trigger : 'blur'
+					message: '文章不能为空！',
+					trigger: 'blur'
 				}]
 			},
-			wangEditor  : {
+			wangEditor: {
 				bar: [
 					'source', '|',
 					'bold', 'underline', 'italic', 'strikethrough', 'eraser', 'forecolor', 'bgcolor', '|',
@@ -59,7 +59,7 @@ module.exports = {
 		 * 提交表单
 		 * @param  {string} formName 表单名称
 		 */
-		onSubmit(formName){
+		onSubmit(formName) {
 
 			// console.log(this.article_data);
 			// return;
@@ -89,18 +89,18 @@ module.exports = {
 			});
 		}
 		,
-		setContent(html, text){
+		setContent(html, text) {
 			this.article_data.content = html;
-			this.temp.content         = text;
+			this.temp.content = text;
 		}
 		,
-		reset_article(article){
+		reset_article(article) {
 			this.$refs[article].resetFields();
 		}
 	},
 
-	mounted(){
-		var self   = this;
+	mounted() {
+		var self = this;
 		var editor = new wangEditor('article');
 
 		// console.log(editor.config);
@@ -113,7 +113,7 @@ module.exports = {
 
 		// 配置自定义参数（举例）
 		editor.config.uploadParams = {
-			token   : this.$store.state.user.userinfo.token,
+			token: this.$store.state.user.userinfo.token,
 			username: this.$store.state.user.userinfo.username
 		};
 
@@ -163,12 +163,9 @@ module.exports = {
 				id: this.$route.query.id
 			};
 			this.$$api_article_findArticle(data, (data) => {
-				// console.log(data);
-
-				this.article_data        = data.article_info;
+				this.article_data = data.article_info;
 				this.article_data.status = data.article_info.status == 1 ? true : false;
-				this.article_data.tabs   = data.article_info.tabs.split(',');
-
+				this.article_data.tabs = data.article_info.tabs.split(',');
 				$("#article").html(this.article_data.content);
 			});
 		}

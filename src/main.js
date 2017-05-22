@@ -1,15 +1,15 @@
 import Vue from 'vue';
 
-// element-ui
+// 注册element-ui
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
 Vue.use(ElementUI);
 
-// router
+// 注册router
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-// vuex
+// 注册vuex
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
@@ -44,7 +44,6 @@ router.beforeEach((to, from, next) => {
 		store.dispatch('remove_userinfo');
 		next('/login');
 	} else {
-
 		//判断是否开启权限
 		if (userinfo.access_status === 1) {
 			var web_routers = typeof userinfo.web_routers === 'object' ? userinfo.web_routers : {};

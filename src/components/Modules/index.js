@@ -1,6 +1,6 @@
 module.exports = {
-	Function: require('./Function/'),
+	//Function: require('./Function/'),
 	Demo: require('./Demo/'),
-	Adv: require('./Adv/'),
-	Components: require('./Components/'),
+	//Adv: require('./Adv/'),
+	//Components: require('./Components/'),
 };
