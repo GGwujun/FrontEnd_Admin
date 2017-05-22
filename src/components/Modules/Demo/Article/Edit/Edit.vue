@@ -1,9 +1,6 @@
 <template>
     <div class="form">
-        <el-form label-width="100px" style="margin:20px;width:90%;min-width:600px;"
-            :model="article_data"
-            :rules="rules"
-            ref='refArticle'>
+        <el-form label-width="100px" style="margin:20px;width:90%;min-width:600px;" :model="article_data" :rules="rules" ref='refArticle'>
             <el-form-item label="文章标题" prop='title' style="width:600px;">
                 <el-input v-model="article_data.title"></el-input>
             </el-form-item>
@@ -40,9 +37,9 @@
     </div>
 </template>
 <script>
-    import EditJs from './Edit.js';
-    module.exports=EditJs;
+import EditJs from './Edit.js';
+module.exports = EditJs;
 </script>
 <style scoped>
-    
+
 </style>

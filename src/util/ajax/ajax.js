@@ -33,9 +33,9 @@ module.exports = function (type, url, data, fn, {
 	var options = {
 		method: type,
 		url: host || url,
-		headers: headers && typeof headers === 'object' ? headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+		headers: headers && typeof headers === 'object' ? headers : { 'Content-Type': 'application/json ' }
 	};
-
+//application/x-www-form-urlencoded
 	//检测接口权限
 	var api_flag = true;
 	if (options.url && options.url.indexOf(gbs.host) && this.$store.state.user.userinfo.access_status === 1) {
