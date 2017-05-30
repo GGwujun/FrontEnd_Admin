@@ -106,6 +106,7 @@ module.exports = {
         },
 
         setUserAccess() {
+            debugger;
             var flag = false;
             for (var i = 0; i < this.checkeds.length; i++) {
                 var arr = this.checkeds[i].split('/');
@@ -128,10 +129,6 @@ module.exports = {
             if (flag === false) {
                 this.checkeds = [];
             }
-
-            // console.log(this.checkeds.join(','));
-            // console.log(this.user_id.join(','));
-
 
             if (this.user_id.length) {
                 UserApi.setAccessUser.call(this, {
@@ -328,8 +325,10 @@ module.exports = {
          * 设置状态
          */
         onSetStatusUser(user, index, list) {
-            this.$$api_user_updateUserStatus({
-                id: user.id
+            this.$$api_user_updateUser({
+                id: user.id,
+                flag: 'status',
+                value: user.status == 0 ? 1 : 0
             }, (data) => {
                 user.status = user.status == 1 ? 2 : 1;
             });
@@ -345,10 +344,7 @@ module.exports = {
                 query: {
                     id: user.id
                 }
-            });
-
-            // this.dialog_access.userinfo=user;
-            // this.dialog_access.show=true;       
+            });     
         },
 
 
@@ -437,12 +433,6 @@ module.exports = {
         this.getList();
 
         this.initRouters();
-
-        //test dialog
-
-        /* setTimeout(() => {
-             this.onSelectUser(this.user_list[0]);
-         }, 600);*/
     },
     watch: {
         '$route'(to, from) {

@@ -60,18 +60,10 @@ module.exports = {
 		 * @param  {string} formName 表单名称
 		 */
 		onSubmit(formName) {
-
-			// console.log(this.article_data);
-			// return;
-
+			debugger;
 			var ref = this.$refs[formName];
 			ref.validate((valid) => {
 				if (valid) {
-					// console.log(this.article_data.content);
-					// console.log(this.temp.content);
-
-					// return;
-
 					if (!this.temp.content) {
 						if ((this.article_data.content.indexOf('<iframe') == -1 || this.article_data.content.indexOf('</iframe>') == -1) && (this.article_data.content.indexOf('<img') == -1)) {
 							this.$message.error('文章内容不能为空！');
@@ -79,9 +71,7 @@ module.exports = {
 						}
 						return;
 					}
-
-					// console.log(this.article_data);
-
+					this.article_data.uid=this.$store.getters.getUserinfo.id
 					this.$$api_article_saveArticle(this.article_data, data => {
 						this.$router.push('/demo/article/list');
 					});
@@ -102,11 +92,6 @@ module.exports = {
 	mounted() {
 		var self = this;
 		var editor = new wangEditor('article');
-
-		// console.log(editor.config);
-
-		// editor.config.jsFilter = false;
-
 		editor.config.uploadImgFileName = 'article';
 
 		editor.config.uploadImgUrl = gbs.host + '/Article/editUpload';

@@ -59,8 +59,8 @@ module.exports = [
 	},
 	{
 		name  : '设置用户状态',
-		method: 'updateUserStatus',
-		path  : '/User/updateUserStatus',
+		method: 'updateUser',
+		path  : '/User/updateUser',
 		type  : 'post',
 	}
 ];

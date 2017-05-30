@@ -143,8 +143,6 @@ module.exports = {
 			this.$$api_user_findUser({
 				id: this.data.id
 			}, data => {
-				// console.log(data.userinfo);
-
 				this.username                 = data.userinfo.username;
 				this.data.access_status       = data.userinfo.access_status === 1 ? true : false;
 				this.data.default_web_routers = data.userinfo.default_web_routers;
@@ -204,8 +202,6 @@ module.exports = {
 
 			this.data.access_status = this.data.access_status === true ? 1 : 2;
 
-			// console.log(this.data);
-			// return;
 
 			if (this.data.id) {
 				if (this.data.access_status === 1 && !this.data.default_web_routers) {

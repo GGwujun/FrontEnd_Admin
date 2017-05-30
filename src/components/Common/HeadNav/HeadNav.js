@@ -64,17 +64,12 @@ module.exports = {
         }
     },
     mounted() {
-        // this.setDialogInfo('access');
-
-        // this.onGetSetting();
     },
     methods: {
         /**
          * 退出登录
          */
         logout() {
-            debugger;
-            console.log(this.$router)
             this.$confirm('你确定退出登录么?', '确认退出', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
@@ -130,9 +125,7 @@ module.exports = {
                         password_confirm: this.dialog[userinfo].password_confirm
                     }, (data) => {
                         this.dialog.show_pass = false;
-                        // this.$nextTick(() => {
                         this.$message.success('修改成功！');
-                        // });
                     });
                 }
             });

@@ -41,14 +41,13 @@
                     <el-button type="info" icon='view' size="mini" @click='onSelectUser(scope.row)'></el-button>
                     <el-button type="info" icon='edit' size="mini" @click='onEditUser(scope.row)'></el-button>
     
-                    <!--<el-button type="primary" size="mini" @click='onSetAccess(scope.row,scope.$index,user_list)'>设置权限
+                    <el-button type="primary" size="mini" @click='onSetAccess(scope.row,scope.$index,user_list)'>设置权限
                     </el-button>
     
-                    <el-button type="danger" icon='delete' size="mini" @click='onDeleteUser(scope.row,scope.$index,user_list)'></el-button>-->
+                    <el-button type="danger" icon='delete' size="mini" @click='onDeleteUser(scope.row,scope.$index,user_list)'></el-button>
     
-                    <!-- 不要试图强制打开这个操作，因为服务端做了验证，打开也没用n(*≧▽≦*)n -->
-                    <!--<el-button size="mini" :type="scope.row.status==1 ? 'danger' : 'info'" @click='onSetStatusUser(scope.row,scope.$index,user_list)'>{{scope.row.status==1 ? '禁用' : '启用'}}
-                    </el-button>-->
+                    <el-button size="mini" :type="scope.row.status==1 ? 'danger' : 'info'" @click='onSetStatusUser(scope.row,scope.$index,user_list)'>{{scope.row.status==1 ? '禁用' : '启用'}}
+                    </el-button>
                 </template>
             </el-table-column>
         </el-table>

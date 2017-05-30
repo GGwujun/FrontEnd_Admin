@@ -25,11 +25,11 @@
                 <template scope='scope'>
                     <el-button type="info" icon='view' size="mini" @click='onSelectArticle(scope.row)'></el-button>
                     <el-button type="info" icon='edit' size="mini" @click='onEditArticle(scope.row)'></el-button>
-                    <!--<el-button 
+                    <el-button 
                             type="danger" 
                             icon='delete' 
                             size="mini"
-                            @click='onDeleteArticle(scope.row,scope.$index,article_list)'></el-button>-->
+                            @click='onDeleteArticle(scope.row,scope.$index,article_list)'></el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -39,10 +39,10 @@
         </el-col>
         <el-dialog size="small" :title="dialog.article_info.title" v-model="dialog.show" @close='onCloseView'>
             <div v-html="dialog.article_info.content"></div>
-            <!--  <span slot="footer" class="dialog-footer">
+              <span slot="footer" class="dialog-footer">
                     <el-button @click="dialog.show = false">取 消</el-button>
                     <el-button type="primary" @click="dialog.show = false">确 定</el-button>
-                </span> -->
+                </span> 
         </el-dialog>
     </div>
 </template>

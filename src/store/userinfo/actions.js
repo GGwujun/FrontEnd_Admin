@@ -1,9 +1,9 @@
 import * as types from './mutations_types';
 
 module.exports = {
-	update_userinfo: ({commit}, {userinfo}) => {
+	update_userinfo: ({ commit }, { userinfo }) => {
 		return new Promise((resolve, reject) => {
-			commit(types.UPDATE_USERINFO, {userinfo});
+			commit(types.UPDATE_USERINFO, { userinfo });
 			resolve()
 		});
 	},
