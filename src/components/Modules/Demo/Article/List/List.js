@@ -1,20 +1,20 @@
 import moment from 'moment'
 module.exports = {
-	name   : 'article-list',
+	name: 'article-list',
 	data() {
 		return {
 			article_list: [],
 
-			batch_id  : '', //批量删除时这是多个用逗号隔开的id字符串
+			batch_id: '', //批量删除时这是多个用逗号隔开的id字符串
 			batch_flag: true, //符合批量删除为true,否则为false
 
 			//需要给分页组件传的信息
 			paginations: {
 				current_page: 1,
-				total       : 0,
-				page_size   : 12,
-				page_sizes  : [3, 9, 12, 24],
-				layout      : "total, sizes, prev, pager, next, jumper"
+				total: 0,
+				page_size: 12,
+				page_sizes: [3, 9, 12, 24],
+				layout: "total, sizes, prev, pager, next, jumper"
 			},
 
 			search_data: {
@@ -23,65 +23,65 @@ module.exports = {
 
 			//详情弹框信息
 			dialog: {
-				show        : false,
+				show: false,
 				article_info: {}
 			},
 
 
 			fields: {
-				status     : {
-					info  : {
-						prop    : 'status',
-						label   : '状态',
+				status: {
+					info: {
+						prop: 'status',
+						label: '状态',
 						sortable: true
 					},
 					filter: {
-						list    : [{
-							text : '启用',
+						list: [{
+							text: '启用',
 							value: 1
 						}, {
-							text : '禁用',
+							text: '禁用',
 							value: 2
 						}],
 						multiple: false
 					},
-					style : {
+					style: {
 						width: '130',
 						align: 'center'
 					}
 				},
 				create_time: {
-					info  : {
-						prop    : 'create_time',
-						label   : '日期',
+					info: {
+						prop: 'create_time',
+						label: '日期',
 						sortable: true
 					},
 					filter: {},
-					style : {
+					style: {
 						width: '260',
 						align: 'center'
 					}
 				},
-				title      : {
-					info  : {
-						prop    : 'title',
-						label   : '文章标题',
+				title: {
+					info: {
+						prop: 'title',
+						label: '文章标题',
 						sortable: true
 					},
 					filter: {},
-					style : {
+					style: {
 						width: '150',
 						align: 'center'
 					}
 				},
-				content    : {
-					info  : {
-						prop    : 'content',
-						label   : '文章内容',
+				content: {
+					info: {
+						prop: 'content',
+						label: '文章内容',
 						sortable: true
 					},
 					filter: {},
-					style : {
+					style: {
 						width: '150',
 						align: 'center'
 					}
@@ -105,9 +105,9 @@ module.exports = {
 		},
 
 		// 格式化date  包含小时
-        formatterDate(item) {
-            return moment(item).format('YYYY-MM-DD HH:MM:SS');
-        },
+		formatterDate(item) {
+			return moment(item).format('YYYY-MM-DD HH:MM:SS');
+		},
 
 		filterSex(value, item) {
 			return item.sex == value;
@@ -125,14 +125,14 @@ module.exports = {
 			// console.log(val);
 			if (val.length) {
 				this.batch_flag = false;
-				var ids         = [];
+				var ids = [];
 				for (var i = 0; i < val.length; i++) {
 					ids.push(val[i].id);
 				}
 				this.batch_id = ids.join(',');
 			} else {
 				this.batch_flag = true;
-				this.batch_id   = '';
+				this.batch_id = '';
 			}
 		},
 
@@ -143,7 +143,7 @@ module.exports = {
 		onSearch() {
 			// console.log(this.search_data);
 			var query = this.$route.query;
-			var sd    = {};
+			var sd = {};
 
 			var query = this.$route.query;
 			for (var p in query) {
@@ -179,7 +179,7 @@ module.exports = {
 		 * @param {string} value 参数字段值
 		 */
 		setPath(field, value) {
-			var path  = this.$route.path,
+			var path = this.$route.path,
 				query = Object.assign({}, this.$route.query);
 
 			if (typeof field === 'object') {
@@ -230,8 +230,6 @@ module.exports = {
 		 * @param  {array} list  当前文章列表数组
 		 */
 		onDeleteArticle(article, index, list) {
-			// console.dir(user);
-
 			if (article === true) {
 				var id = this.batch_id;
 			} else {
@@ -264,8 +262,8 @@ module.exports = {
 			} else {
 				this.$message({
 					showClose: true,
-					message  : 'ID跑哪去了？',
-					type     : 'error'
+					message: 'ID跑哪去了？',
+					type: 'error'
 				});
 			}
 		},
@@ -276,7 +274,7 @@ module.exports = {
 		 * @param  {object} article 当前文章信息对象
 		 */
 		onSelectArticle(article) {
-			this.dialog.show         = true;
+			this.dialog.show = true;
 			this.dialog.article_info = article;
 		},
 
@@ -298,14 +296,13 @@ module.exports = {
 			where,
 			fn
 		} = {}) {
-
 			var query = this.$route.query;
 
 			this.paginations.current_page = page || parseInt(query.page) || 1;
-			this.paginations.page_size    = page_size || parseInt(query.page_size) || this.paginations.page_size;
+			this.paginations.page_size = page_size || parseInt(query.page_size) || this.paginations.page_size;
 
 			var data = {
-				page     : this.paginations.current_page,
+				page: this.paginations.current_page,
 				page_size: this.paginations.page_size
 			};
 
@@ -315,13 +312,16 @@ module.exports = {
 				for (var s in query) {
 					if (this.search_data[s] !== undefined) {
 						this.search_data[s] = query[s];
-						data[s]             = query[s];
+						data[s] = query[s];
 					}
 				}
 			}
 
+			let uid = this.$store.getters.getUserinfo.id;
+			data['uid'] = uid;
+
 			this.$$api_article_selectArticle(data, (article_data) => {
-				this.article_list      = article_data.list.data;
+				this.article_list = article_data.list.data;
 				this.paginations.total = article_data.list.total;
 
 				fn && fn();
@@ -335,7 +335,7 @@ module.exports = {
 			}
 		});
 	},
-	'$route' (to, from) {
+	'$route'(to, from) {
 
 	}
 }
