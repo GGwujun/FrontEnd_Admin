@@ -1,12 +1,8 @@
-### SlsAdmin介绍
+### ionic-admin介绍
 
 此项目是一个后台管理系统，里面有完整并且实际的增删改查功能，有普通模式操作，也有高级模式操作，用此项目，可以快速帮您完成后台功能。
 此项目重点突出在于架构模式，相比那些有很多页面，但架构混乱的项目来说，一个真正的前端应该更在意项目的架构。
 
-
-
-### 文档更新
-文档暂时还没有更新完，此文档，目录名后面带'-'的代表还没更新，更新的就不带-了。
 
 ### 访问账号
 #### 账号注册？
@@ -14,22 +10,16 @@
 
 **大家注册的账号默认都归属到管理员(我)的下边，所以，除了我，别人无法操作你以及你添加的数据。**
 
-#### 具体文档请查看[sls-admin文档](https://vue2doc.slsadmin.sailengsi.com/)
-#### 在线演示查看[sls-admin演示](https://vue2.slsadmin.sailengsi.com/)
+#### 在线演示查看[ionic-admin演示](http://www.frontender.club)
 
 使用步骤
 
 ``` bash
 # get project
-git clone https://github.com/sailengsi/sls-admin.git
-
+git clone https://github.com/GGwujun/FrontEnd_Admin.git
 #进入项目目录
-cd sls-admin/vue2
+cd FrontEnd_Admin
 
-#修改api代理
-- 把sls-admin/vue2/config中的index.js打开
-- 找到 target: 'http://slsadmin.api.sls.com' 这一行
-- 修改target值为：'http://slsadmin.api.sailengsi.com'
 
 # 安装依赖
 npm install
@@ -74,7 +64,8 @@ npm run build
 
 
 ### 沟通交流
- 1. 如果您有什么问题，可提issues，也可加QQ群讨论：613102022。
+ 1. 如果您有什么问题，可提issues，也可加QQ群讨论：225192209。
  2. 更新日志：可查看提交记录，有较大的更新都会在提交日志中明确写出。
- 3. 广告：个人官方博客：https://www.sailengsi.com 交流技术，交流心得。
+ 3. 广告：个人官方公众号：“web前端开发大师兄” 交流技术，交流心得。
+ 
 
