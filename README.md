@@ -68,4 +68,5 @@ npm run build
  2. 更新日志：可查看提交记录，有较大的更新都会在提交日志中明确写出。
  3. 广告：个人官方公众号：“web前端开发大师兄” 交流技术，交流心得。
  
+ ![Alt text](http://upload-images.jianshu.io/upload_images/3533080-d8a8170d95642628.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
